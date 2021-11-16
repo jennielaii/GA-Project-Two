@@ -1,3 +1,4 @@
+
 # Wanderlust-
 
 ####Overview 
@@ -7,9 +8,13 @@ This project is a planner. FIrst, a user would need to sign up and make an accou
 
 ![Wireframe](project2Images/dbERD.png)
 
-![Wireframe](project2Images/homeWireframe.png)
+![Wireframe](./project2Images/Page_0.png)
+![Wireframe](./project2Images/Page_1.png)
+![Wireframe](./project2Images/Page_2.png)
+![Wireframe](./project2Images/Page_3.png)
+![Wireframe](./project2Images/Page_4.png)
+![Wireframe](./project2Images/Page_5.png)
 
-![Wireframe](project2Images/userProfileWireframe.png)
 
 ### User Stories
 
@@ -55,4 +60,7 @@ When I click on the minus button next to the items, the items should be deleted
 
 ### Stretch Goals 
 
+###Stretch Goals 
 -Add weather API 
+======
+=======
