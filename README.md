@@ -8,6 +8,7 @@ This project is a planner. FIrst, a user would need to sign up and make an accou
 
 ### Wireframe 
 ![Wireframe](project2Images/dbERD.png)
+![Wireframe](./project2Images/Page_0.png)
 ![Wireframe](./project2Images/Page_1.png)
 ![Wireframe](./project2Images/Page_2.png)
 ![Wireframe](./project2Images/Page_3.png)
