@@ -39,32 +39,6 @@ When I click on the minus button next to the items, the items should be deleted
 | Profile | User can checkout their personal profile such as name and email | /users/profile |
 
 ___
-
-### MVP 
--Am I able to create a profile 
--Am I able to login once I have already made a profile
--Am I able to add on to my to do list 
--Am I able to edit my to do list
--Am I able to delete items from my to do list
--Am I able to log out successfully? 
-=======
-
--When I click the log out button, I should not see my page anymore but instead the home screen 
-
-### Routes
-
--route.post (to register an account)  
-
--route.post (to log into your account)
-
--route.post (to posts to to-do list) 
-
--route.put (to edit posts)
-
--route.delete (to delete posts)
-
--route.post (to log out )
-
 ### MVP 
 
 -(Am I able to create a profile) 
