@@ -26,17 +26,15 @@ This project is a planner. FIrst, a user would need to sign up and make an accou
 When I click on the minus button next to the items, the items should be deleted
 
 ### Routes
-| Functions              | Detail                                            | URL                         |
-| :--------------------: | ------------------------------------------------- | --------------------------- |
-| Sign up for an account | 1. User is able to decide whether to register or login| /welcomepage |
-| Sign up for an account | 1. User is able to register with Name, Email and Password | /register |
-| Log in with email | 1. User can log in using registered email<br>2. User can get a warning message for incorrect password or unregistered account | /login |
-| Log out | 1. User can log out of an account<br>2. User can get a reminder for successful logout | /users/logout |
-| Create a checklist | 1. User can add a checklist with detail after login<br>2. User can get a warning message for invalid input format | /users/checklist/new |   
-| Edit a checklist | User can update detail info of a checklist after login | /users/checklist/edit/:id |
-| Delete a checklist | 1. User can delete a checklist after login<br>2. User can receive a warning message before actual delete | /users/checklist/delete/:id |
-| Advice | User get to see advice that is given to them for their traveling needs | /users/advice |
-| Profile | User can checkout their personal profile such as name and email | /users/profile |
+| Functions              | Detail                                            | URL                         | HTTP Verb |
+| :--------------------: | ------------------------------------------------- | --------------------------- |-----------|
+| Sign up for an account | 1. User is able to register with Name, Email and Password | /register | app.post |
+| Log in with email | 1. User can log in using registered email<br>2. User can get a warning message for incorrect password or unregistered account | /login | app.post |
+| Log out | 1. User can log out of an account<br>2. User can get a reminder for successful logout | /users/logout | app.get |
+| Create a checklist | 1. User can add a checklist with detail after login<br>2. User can get a warning message for invalid input format | /users/checklist/new | app.post |
+| Edit a checklist | User can update detail info of a checklist after login | /users/checklist/edit/:id | app.put |
+| Delete a checklist | 1. User can delete a checklist after login<br>2. User can receive a warning message before actual delete | /users/checklist/delete/:id | app.delete |
+| Profile | User can checkout their personal profile such as name and email | /users/profile | app.get |
 
 ___
 ### MVP 
@@ -53,5 +51,7 @@ ___
 
 -(Am I able to log out successfully?) 
 ### Stretch Goals 
+-Advice page
+
 -Add weather API 
 
