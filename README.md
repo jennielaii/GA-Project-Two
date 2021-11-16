@@ -6,7 +6,7 @@ This project is a planner. FIrst, a user would need to sign up and make an accou
 
 ### Wireframe 
 
-![Wireframe](project2Images/dbERD.png)
+![Wireframe](./project2Images/ERD.png)
 
 ![Wireframe](./project2Images/Page_0.png)
 ![Wireframe](./project2Images/Page_1.png)
@@ -32,17 +32,17 @@ When I click on the minus button next to the items, the items should be deleted
 
 ### Routes
 
--route to register an account  
+-route.post (to register an account)  
 
--route to log into your account
+-route.post (to log into your account)
 
--route to posts to to-do list 
+-route.post (to posts to to-do list) 
 
--route to edit posts
+-route.put (to edit posts)
 
--route to delete posts
+-route.delete (to delete posts)
 
--route to log out 
+-route.post (to log out )
 
 ### MVP 
 
