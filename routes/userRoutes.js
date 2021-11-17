@@ -1,4 +1,4 @@
-const userController = require('../controllers/userControllers')
+const userController = require('../controllers/userController')
 
 const express = require('express')
 const userRoutes = express.Router()
@@ -13,4 +13,4 @@ userRoutes.get('/logout', userController.logoutUser);
 // userRoutes.get('/', userController.);
 
 
-modules.exports = userRoutes
+module.exports = userRoutes
