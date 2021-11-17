@@ -39,41 +39,68 @@ userController.logoutUser = async (req, res) => {
         req.flash('success_msg', 'You are logged out');
         res.redirect('/user/login')
     }catch (err) {
+        res.json({err});
+    }
+}
+
+userController.addUserChecklist = async (req,res) => {
+    try{
+        const newItem = await models.itemList.create({
+            description: req.body.description
+        })
+        const user = models.user.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        user.addItemLists(newItem);
+        res.json({newItem});
+    }catch(err) {
+
+    }
+}
+
+userController.editItem = async (req,res) => {
+    try{ 
+        const item = await models.itemList.findOne({
+            where: {
+                id: req.param.id
+            }
+        })
+        const updatedItem = await item.update({
+            name: req.body.description
+        })
+        res.json(updatedItem);
+    }catch(err) {
+        res.json({err});
+    }
+}
+
+userController.deleteItem = async (req,res) => {
+    try{ 
+        const item = await models.listItem.findOne({
+            where:{
+                id: req.params.id
+            }
+        })
+        const deleteItem = await item.destroy();
+        res.json(deleteItem);
+    }catch(err) {
+        res.json({err});
+    }
+}
+
+userController.viewProfile = async (req,res) => {
+    try{
+        const profile = await models.user.findOne({
+            where:{
+                id: req.params.id
+            }
+        })
+        res.json(profile);
+    }catch(err) {
         res.json({err})
     }
 }
-//----gonna user later----
-// userController.addUserChecklist = async (req,res) => {
-//     try{
-//         const newItem = await models.itemList.create({
-//             description: req.body.description
-//         })
-//         const user = models.user.findOne({
-//             where: {
-//                 id: req.params.id
-//             }
-//         })
-//         user.addItemLists(newItem)
-//         res.json({newItem}) 
-//     }catch(err) {
-
-//     }
-// }
-
-// userController.editItem = async (req,res) => {
-//     try{ 
-//         const item = await models.itemList.findOne({
-//             where: {
-//                 id: req.param.id
-//             }
-//         })
-//         const updatedItem = await item.update({
-//             name: req.body.description
-//         })
-//         res.json(updatedItem)
-//     }catch(err) {
-//         res.json({err})
-//     }
-// }
 
 module.exports = userController
