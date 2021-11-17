@@ -1,0 +1,32 @@
+{
+  "name": "wanderlust-",
+  "version": "1.0.0",
+  "description": "####Overview  This project is a planner. FIrst, a user would need to sign up and make an account. Once the account is made, you will be able to add, update, and remove items from your to do list.",
+  "main": "server.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennielaii/Wanderlust-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jennielaii/Wanderlust-/issues"
+  },
+  "homepage": "https://github.com/jennielaii/Wanderlust-#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "rowdy-logger": "^1.0.2",
+    "sequelize": "^6.9.0"
+  }
+}
