@@ -11,6 +11,10 @@ app.use(express.json())
 app.use('/user', userRoutes)
 // app.use('/listItem', listItemRoutes)
 
+app.get('/', (req, res) => {
+    res.send(`yooo`)
+})
+
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
     routesReport.print()
