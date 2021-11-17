@@ -42,7 +42,7 @@ userController.logoutUser = async (req, res) => {
         res.json({err})
     }
 }
-
+//----gonna user later----
 // userController.addUserChecklist = async (req,res) => {
 //     try{
 //         const newItem = await models.itemList.create({
