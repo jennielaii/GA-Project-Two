@@ -9,8 +9,8 @@ app.listen(PORT, () => {
 const routesReport = rowdy.begin(app)
 
 const userRoutes = require('./routes/userRoutes')
-const listitemRoutes = require('./routes/listitemRoutes')
+// const listItemRoutes = require('./routes/listitemRoutes')
 
 app.use(express.json())
-app.use('/article', userRoutes)
-app.use('/comment', listitemRoutes)
+app.use('/user', userRoutes)
+// app.use('/listItem', listItemRoutes)
