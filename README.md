@@ -1,7 +1,4 @@
 # Wanderlust-
-<<<<<<< HEAD
-Hello, does this work?
-=======
 
 ####Overview 
 This project is a planner. FIrst, a user would need to sign up and make an account. Once the account is made, you will be able to add, update, and remove items from your to do list. 
@@ -40,4 +37,3 @@ When I click on the minus button next to the items, the items should be deleted
 =======
 
 
->>>>>>> origin
