@@ -35,27 +35,45 @@ userController.loginUser = async (req, res) => {
 
 userController.logoutUser = async (req, res) => {
     try{
-
+        req.logout();
+        req.flash('success_msg', 'You are logged out');
+        res.redirect('/user/login')
     }catch (err) {
         res.json({err})
     }
 }
 
-userController.addUserChecklist = async (req,res) => {
-    try{
-        const newItem = await models.itemList.create({
-            description: req.body.description
-        })
-        const user = models.user.findOne({
-            where: {
-                id: req.params.id
-            }
-        })
-        user.addItemLists(newItem)
-        res.json({newItem}) 
-    }catch(err) {
+// userController.addUserChecklist = async (req,res) => {
+//     try{
+//         const newItem = await models.itemList.create({
+//             description: req.body.description
+//         })
+//         const user = models.user.findOne({
+//             where: {
+//                 id: req.params.id
+//             }
+//         })
+//         user.addItemLists(newItem)
+//         res.json({newItem}) 
+//     }catch(err) {
 
-    }
-}
+//     }
+// }
+
+// userContorller.editItem = async (req,res) => {
+//     try{ 
+//         const item = await models.itemList.findOne({
+//             where: {
+//                 id: req.param.id
+//             }
+//         })
+//         const updatedItem = await item.update({
+//             name: req.body.description
+//         })
+//         res.json(updatedItem)
+//     }catch(err) {
+//         res.json({err})
+//     }
+// }
 
 module.exports = userController
