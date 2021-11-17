@@ -60,7 +60,7 @@ userController.logoutUser = async (req, res) => {
 //     }
 // }
 
-// userContorller.editItem = async (req,res) => {
+// userController.editItem = async (req,res) => {
 //     try{ 
 //         const item = await models.itemList.findOne({
 //             where: {
