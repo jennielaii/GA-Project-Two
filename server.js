@@ -21,8 +21,6 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/listItem', listItemRoutes)
 app.use('/user', userRoutes)
 
-
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
     routesReport.print()
- })

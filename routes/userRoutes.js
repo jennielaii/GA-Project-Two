@@ -1,4 +1,4 @@
-const userController = require('../controllers/userControllers')
+const userController = require('../controllers/userController')
 
 const express = require('express')
 const userRoutes = express.Router()
@@ -6,6 +6,8 @@ const userRoutes = express.Router()
 userRoutes.post('/register', userController.registerUser);
 userRoutes.post('/login', userController.loginUser);
 userRoutes.get('/logout', userController.logoutUser);
+
+//-----were gonna user later
 // userRoutes.get('/', userController.);
 // userRoutes.post('/', userController.);
 // userRoutes.put('/', userController.);
@@ -13,4 +15,4 @@ userRoutes.get('/logout', userController.logoutUser);
 // userRoutes.get('/', userController.);
 
 
-modules.exports = userRoutes
+module.exports = userRoutes
