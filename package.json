@@ -24,6 +24,7 @@
   "homepage": "https://github.com/jennielaii/Wanderlust-#readme",
   "dependencies": {
     "bootstrap": "^5.1.3",
+    "bootswatch": "^5.1.3",
     "connect-flash": "^0.1.1",
     "cors": "^2.8.5",
     "ejs": "^3.1.6",

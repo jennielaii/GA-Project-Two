@@ -8,7 +8,7 @@ userController.registerUser = async (req, res) => {
             email: req.body.email,
             password: req.body.password
         }) 
-        res.json({newUser})
+        res.render('login');
     }catch(err){
     res.json({err})
     }
