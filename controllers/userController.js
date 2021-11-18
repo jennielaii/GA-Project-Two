@@ -3,7 +3,7 @@ const userController = {}
 
 userController.registerUser = async (req, res) => {
     try{
-        const newUser = await models.user.create({
+        await models.user.create({
             name: req.body.name,
             email: req.body.email,
             password: req.body.password
@@ -58,8 +58,8 @@ userController.logoutUser = async (req, res) => {
         res.json({err});
     }
 }
-
-userController.addUserChecklist = async (req,res) => {
+//POST-ADD ITEMS TO CHECKLIST
+userController.addToDo = async (req,res) => {
     try{
         const newItem = await models.itemList.create({
             description: req.body.description
@@ -75,7 +75,7 @@ userController.addUserChecklist = async (req,res) => {
 
     }
 }
-
+//PUT-EDIT CHECKLIST
 userController.editItem = async (req,res) => {
     try{ 
         const item = await models.itemList.findOne({
@@ -86,12 +86,13 @@ userController.editItem = async (req,res) => {
         const updatedItem = await item.update({
             name: req.body.description
         })
-        res.json(updatedItem);
+        res.json(updatedItem)
+        res.redirect('');
     }catch(err) {
         res.json({err});
     }
 }
-
+//
 userController.deleteItem = async (req,res) => {
     try{ 
         const item = await models.listItem.findOne({
