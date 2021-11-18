@@ -12,5 +12,6 @@ userRoutes.post('/:id/checklist/new', userController.addUserChecklist);
 userRoutes.put('/:userId/checklist/edit/itemId', userController.editItem);
 userRoutes.delete('/checklist/delete/:id', userController.deleteItem);
 userRoutes.get('/:id/profile', userController.viewProfile);
+// userRoutes.get('/user/:id/home', userController.viewHome);
 
 module.exports = userRoutes

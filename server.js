@@ -21,9 +21,20 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/listItem', listItemRoutes)
 app.use('/user', userRoutes);
 
+app.get('/user/register', (req, res) => {
+    console.log('hitting');
+    res.render('register');
+});
+
+app.get('/user/login', (req, res) => {
+    console.log('hitting');
+    res.render('login');
+});
+
 app.get('/', (req, res) => {
-    res.render('welcome.ejs');
-})
+    console.log('hitting');
+    res.render('welcome');
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
