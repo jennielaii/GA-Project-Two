@@ -86,7 +86,8 @@ userController.editItem = async (req,res) => {
         const updatedItem = await item.update({
             name: req.body.description
         })
-        res.json(updatedItem);
+        res.json(updatedItem)
+        res.redirect('');
     }catch(err) {
         res.json({err});
     }
