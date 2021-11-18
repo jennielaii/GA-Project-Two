@@ -23,7 +23,7 @@ userController.loginUser = async (req, res) => {
         })
 
         if (user.password === req.body.password) {
-            res.json({user})
+            res.redirect('/user/:id/home')
         }else {
             res.status(401)
             res.json({err: 'login failed'})
@@ -37,6 +37,14 @@ userController.showRegisterUser = async (req,res) => {
     try{
          res.render('register.ejs');
     }catch (err) {
+        res.json({err})
+    }
+}
+
+userController.showLoginUser = async (req,res) => {
+    try{
+        res.render('login.ejs')
+    }catch(err) {
         res.json({err})
     }
 }
@@ -110,5 +118,7 @@ userController.viewProfile = async (req,res) => {
         res.json({err})
     }
 }
+
+
 
 module.exports = userController
