@@ -21,15 +21,9 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/listItem', listItemRoutes)
 app.use('/user', userRoutes);
 
-// app.get('/', (req, res) => {
-//     res.send('./views/welcome.ejs')
-// });
-
-app.get('/', function (req, res) {
+app.get('/', (req, res) => {
     res.render('welcome.ejs');
-});
-
-
+})
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
