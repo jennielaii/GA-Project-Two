@@ -49,10 +49,10 @@ app.get('/', (req, res) => {
     res.render('welcome');
 });
 
-// app.get('/user/:id/home', (req, res) => {
-//     console.log('hitting');
-//     res.render('dashboard');
-// });
+app.get('/user/:id/home', (req, res) => {
+    console.log('hitting');
+    res.render('dashboard');
+});
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
