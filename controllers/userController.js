@@ -63,7 +63,7 @@ userController.addUserChecklist = async (req,res) => {
     try{
         const newItem = await models.itemList.create({
             description: req.body.description
-        })
+        })git 
         const user = models.user.findOne({
             where: {
                 id: req.params.id
