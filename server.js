@@ -13,6 +13,7 @@ app.use(express.json())
 app.use(expressLayouts);
 // app.set('view engine', 'ejs');
 app.use(express.static("public"));
+app.set('view engine', 'ejs');
 
 // Mount middleware 
 app.use(express.urlencoded({ extended: true }));
@@ -21,9 +22,9 @@ app.use(express.urlencoded({ extended: true }));
 // app.use('/listItem', listItemRoutes)
 app.use('/user', userRoutes);
 
-app.get('/', (req, res) => {
-    res.send(`yooo`)
-})
+app.get('/', function(req, res) {
+    res.render('welcome.ejs');
+  })
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
