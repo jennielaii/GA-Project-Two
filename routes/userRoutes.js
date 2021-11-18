@@ -5,7 +5,7 @@ const userController = require('../controllers/userController');
 
 userRoutes.post('/register', userController.registerUser);
 userRoutes.post('/user/register', userController.showRegisterUser);
-userRoutes.post('/user/login', userController.showLoginUser);
+// userRoutes.post('/user/login', userController.showLoginUser);
 userRoutes.post('/login', userController.loginUser);
 userRoutes.get('/logout', userController.logoutUser);
 userRoutes.post('/:id/checklist/new', userController.addUserChecklist);

@@ -33,6 +33,14 @@ userController.loginUser = async (req, res) => {
     }
 }
 
+userController.showRegisterUser = async (req,res) => {
+    try{
+         res.render('register.ejs');
+    }catch (err) {
+        res.json({err})
+    }
+}
+
 userController.logoutUser = async (req, res) => {
     try{
         req.logout();
