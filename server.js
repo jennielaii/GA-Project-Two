@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
-    res.send(`yooo`)
+    res.render('welcome.ejs');
 })
 
 app.listen(PORT, () => {
