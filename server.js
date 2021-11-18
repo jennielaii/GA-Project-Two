@@ -22,7 +22,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/user', userRoutes);
 
 app.get('/', (req, res) => {
-    res.render('welcome.ejs');
+    console.log('hitting');
+    res.render('welcome');
 })
 
 app.listen(PORT, () => {
