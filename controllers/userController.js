@@ -88,16 +88,16 @@ userController.deleteItem = async (req,res) => {
         const user = await models.user.findOne({
             where: {
                 id: req.params.userId
-            },
-            include: {
-                model: models.listItem
-            },
-            order:[[models.listItem, "createdAt", "ASC" ]]
+            }
+            // include: {
+            //     model: models.listItem
+            // },
+            // order:[[models.listItem, "createdAt", "ASC" ]]
         })
         console.log(user.id)
-        const itemToDelete = await item.destroy();
+        await item.destroy();
         // res.json(itemToDelete);
-        res.redirect(`/user/${user.id}/home`, itemToDelete)
+        res.redirect(`/user/${user.id}/home`)
     }catch(err) {
         res.json({err});
     }
