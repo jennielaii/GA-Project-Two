@@ -38,35 +38,17 @@ app.use(methodOverride('_method'));
 //
 app.use('/user', userRoutes);
 
-app.get('/user/register', (req, res) => {
-    console.log('hitting');
-    res.render('register');
-});
 
-app.get('/user/login', (req, res) => {
-    console.log('hitting');
-    res.render('login');
-});
 
 app.get('/', (req, res) => {
     console.log('hitting');
     res.render('welcome');
 });
 
-app.get('/user/:id/home', (req, res) => {
-    console.log('hitting');
-    res.render('dashboard');
-});
 
-// CHECKLIST Routes
-
-// app.get('/', function(req, res){
-//     res.render('dashboard');
+//  app.post('/user/:id/addtask', function (req, res) {
+//     res.render(':id/todo/new')
 //  });
-
- app.post('/addtask', function (req, res) {
-    res.render('dashboard')
- });
 
 
 app.listen(PORT, () => {
