@@ -38,23 +38,7 @@ userController.loginUser = async (req, res) => {
     }
 }
 
-//Get all items
-userController.getAllUserItems = async (req, res) => {
-    try{
-        const userItems = await models.listItems.findAll({
-            include: {
-                model: models.itemList
-            }
-        })
-        console.log(userItems, 'all user items from db')
-        const context = {
-            userItemsFromCntlr: userItems
-        }
-    }catch (err) {
-        res.json({err})
-    }
-}
-//Adds new item to user to do list 
+//Adds a new item to the user to do list 
 userController.addToDo = async (req,res) => {
     try{
         console.log(req.body)
@@ -150,12 +134,16 @@ userController.viewHome = async (req,res) => {
         const user = await models.user.findOne({
             where: {
                 id: req.params.id
+            },
+            include: {
+                model: models.listItem
             }
         })
         
         const context = {
             user: user
         };
+        console.log(context)
         res.render('dashboard', context)
         
     }catch(err) {

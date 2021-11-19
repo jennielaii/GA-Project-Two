@@ -8,11 +8,13 @@
         <%= user.id %><p>sample</p>
         <form action = "/user/<%= user.id %>/todo/new" method="POST">
                <input type="text" name="description" placeholder="add new task">   <button type = "submit"> Add Task </button>
-        <h2> Added Task </h2>
-        <!-- <button formaction="/removetask" type="submit"> Remove </button> -->
+               <!-- <button formaction="/removetask" type="submit"> Remove </button> -->    
         </form>
-        <h2> Completed task </h2>
-        </div>
+        <h2> Added Task </h2>
+        <% user.listItems.forEach(listItem => { %>
+            <li> <%= listItem.description %> </li>
+        <% }) %>
+    </div>
 
 </body>
 <%- include("./partials/footer.ejs")%>
