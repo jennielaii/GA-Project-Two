@@ -46,10 +46,6 @@ app.get('/', (req, res) => {
 });
 
 
-//  app.post('/user/:id/addtask', function (req, res) {
-//     res.render(':id/todo/new')
-//  });
-
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)

@@ -52,9 +52,9 @@ userController.addToDo = async (req,res) => {
             }
         })
 
-        const context = {
-            user: user
-        };
+        // const context = {
+        //     user: user
+        // };
         console.log('this is the user', user)
         user.addListItems(newItem);
         res.redirect(`/user/${user.id}/home`);
@@ -67,7 +67,7 @@ userController.editItem = async (req,res) => {
     try{ 
         const item = await models.itemList.findOne({
             where: {
-                id: req.param.itemId
+                id: req.params.itemId
             }
         })
         const update = req.body
@@ -85,8 +85,10 @@ userController.deleteItem = async (req,res) => {
                 id: req.params.itemId
             }
         })
-        const deleteItem = await item.destroy();
-        res.json(deleteItem);
+        console.log(item)
+        const itemToDelete = await item.destroy();
+        res.json(itemToDelete);
+        //res.redirect('dashboard', itemToDelete)
     }catch(err) {
         res.json({err});
     }
