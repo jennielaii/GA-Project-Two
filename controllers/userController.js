@@ -137,7 +137,8 @@ userController.viewHome = async (req,res) => {
             },
             include: {
                 model: models.listItem
-            }
+            },
+            order:[[models.listItem, "createdAt", "ASC" ]]
         })
         
         const context = {

@@ -13,14 +13,14 @@ userRoutes.post('/login', userController.loginUser);
 //functional route to logout a user
 userRoutes.get('/logout', userController.logoutUser);
 
-//functional route to adda new item associated with the user 
+//functional route to add a new item associated with the user 
 userRoutes.post('/:id/todo/new', userController.addToDo);
 
-//
-userRoutes.put('/:userId/todo/edit/itemId', userController.editItem);
+//functional route to edite an item 
+userRoutes.put('/:itemId', userController.editItem);
 
-//
-userRoutes.delete('/todo/delete/:itemId', userController.deleteItem);
+//functional route to delete an item 
+userRoutes.delete('/:itemId', userController.deleteItem);
 
 //View the page of the usaer profile
 userRoutes.get('/:userId/profile', userController.viewProfile);
