@@ -67,24 +67,22 @@ userController.editItem = async (req,res) => {
     try{ 
         const item = await models.itemList.findOne({
             where: {
-                id: req.param.id
+                id: req.param.itemId
             }
         })
-        const updatedItem = await item.update({
-            name: req.body.description
-        })
-        res.json(updatedItem)
-        res.redirect('');
+        const update = req.body
+        const updatedItem = await item.update(update)
+        res.json(updatedItem);
     }catch(err) {
         res.json({err});
     }
 }
-//
+//Deletes an item 
 userController.deleteItem = async (req,res) => {
     try{ 
         const item = await models.listItem.findOne({
             where:{
-                id: req.params.id
+                id: req.params.itemId
             }
         })
         const deleteItem = await item.destroy();
@@ -104,6 +102,13 @@ userController.logoutUser = async (req, res) => {
         res.json({err});
     }
 }
+
+
+
+
+
+
+
 
 
 //PRESENTATIONAL FUNCTIONS----------------------------------

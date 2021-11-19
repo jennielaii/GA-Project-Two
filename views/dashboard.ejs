@@ -5,17 +5,17 @@
 <body>
     <div class="container">
         <h2> A Simple ToDo List App </h2>
-        <%= user.id %><p>sample</p>
+        <h2> Hello <%= user.name %>! </h2>
         <form action = "/user/<%= user.id %>/todo/new" method="POST">
                <input type="text" name="description" placeholder="add new task">   <button type = "submit"> Add Task </button>
                <!-- <button formaction="/removetask" type="submit"> Remove </button> -->    
         </form>
         <h2> Added Task </h2>
         <% user.listItems.forEach(listItem => { %>
-            <li> <%= listItem.description %> </li>
+            <li> <%= listItem.description %>  <form action="/user/item/<%= listItem.id %>"?_method=DELETE" method="POST"> <input type="submit" value="Delete" </form> </li>
         <% }) %>
     </div>
 
 </body>
 <%- include("./partials/footer.ejs")%>
-</html>
+</html>     
