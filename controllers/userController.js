@@ -95,9 +95,7 @@ userController.deleteItem = async (req,res) => {
 //Logs out the user and redirects the browser to the homepage
 userController.logoutUser = async (req, res) => {
     try{
-        req.logout();
-        req.flash('success_msg', 'You are logged out');
-        res.redirect('/user/login')
+        res.redirect('/')
     }catch (err) {
         res.json({err});
     }
