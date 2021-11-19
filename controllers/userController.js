@@ -23,6 +23,7 @@ userController.loginUser = async (req, res) => {
         })
 
         if (user.password === req.body.password) {
+            console.log(user.name, "logged in")
             res.redirect(`/user/${user.id}/home`)
         }else {
             res.status(401)
@@ -35,7 +36,7 @@ userController.loginUser = async (req, res) => {
 
 userController.showRegisterUser = async (req,res) => {
     try{
-         res.render('register.ejs');
+         res.render('register');
     }catch (err) {
         res.json({err})
     }
@@ -43,7 +44,7 @@ userController.showRegisterUser = async (req,res) => {
 
 userController.showLoginUser = async (req,res) => {
     try{
-        res.render('login.ejs')
+        res.render('login')
     }catch(err) {
         res.json({err})
     }
@@ -59,20 +60,43 @@ userController.logoutUser = async (req, res) => {
     }
 }
 //POST-ADD ITEMS TO CHECKLIST
+userController.getAllUserItems = async (req, res) => {
+    try{
+        const userItems = await models.listItems.findAll({
+            include: {
+                model: models.itemList
+            }
+        })
+        console.log(userItems, 'all user items from db')
+        const context = {
+            userItemsFromCntlr: userItems
+        }
+    }catch (err) {
+        res.json({err})
+    }
+}
+
 userController.addToDo = async (req,res) => {
     try{
-        const newItem = await models.itemList.create({
+        console.log(req.body)
+        console.log('yahoo')
+        const newItem = await models.listItem.create({
             description: req.body.description
         })
-        const user = models.user.findOne({
+        const user = await models.user.findOne({
             where: {
                 id: req.params.id
             }
         })
-        user.addItemLists(newItem);
-        res.json({newItem});
-    }catch(err) {
 
+        const context = {
+            user: user
+        };
+        console.log('this is the user', user)
+        user.addListItems(newItem);
+        res.redirect(`/user/${user.id}/home`);
+    }catch(err) {
+        console.log(err)
     }
 }
 //PUT-EDIT CHECKLIST
@@ -119,6 +143,25 @@ userController.viewProfile = async (req,res) => {
         res.json({err})
     }
 }
+userController.viewHome = async (req,res) => {
+    try{
+        // console.log('view home request', req, res)
+        const user = await models.user.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+
+        const context = {
+            user: user
+        };
+       res.render('dashboard', context)
+            
+    }catch(err) {
+        res.json({err})
+    }
+}
+
 
 
 
