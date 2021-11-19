@@ -1,6 +1,9 @@
 const models = require('../models')
 const userController = {}
 
+//FUNCTIONAL FUNCTIONS----------------------------------
+
+//Creating a new user in the database
 userController.registerUser = async (req, res) => {
     try{
         await models.user.create({
@@ -14,6 +17,7 @@ userController.registerUser = async (req, res) => {
     }
 }
 
+//Loggin in the user and redirecting them to their home page
 userController.loginUser = async (req, res) => {
     try{ 
         const user = await models.user.findOne({
@@ -23,6 +27,7 @@ userController.loginUser = async (req, res) => {
         })
 
         if (user.password === req.body.password) {
+            console.log(user.name, "logged in")
             res.redirect(`/user/${user.id}/home`)
         }else {
             res.status(401)
@@ -33,46 +38,28 @@ userController.loginUser = async (req, res) => {
     }
 }
 
-userController.showRegisterUser = async (req,res) => {
-    try{
-         res.render('register.ejs');
-    }catch (err) {
-        res.json({err})
-    }
-}
-
-userController.showLoginUser = async (req,res) => {
-    try{
-        res.render('login.ejs')
-    }catch(err) {
-        res.json({err})
-    }
-}
-
-userController.logoutUser = async (req, res) => {
-    try{
-        req.logout();
-        req.flash('success_msg', 'You are logged out');
-        res.redirect('/user/login')
-    }catch (err) {
-        res.json({err});
-    }
-}
-//POST-ADD ITEMS TO CHECKLIST
+//Adds a new item to the user to do list 
 userController.addToDo = async (req,res) => {
     try{
-        const newItem = await models.itemList.create({
+        console.log(req.body)
+        console.log('yahoo')
+        const newItem = await models.listItem.create({
             description: req.body.description
         })
-        const user = models.user.findOne({
+        const user = await models.user.findOne({
             where: {
                 id: req.params.id
             }
         })
-        user.addItemLists(newItem);
-        res.json({newItem});
-    }catch(err) {
 
+        const context = {
+            user: user
+        };
+        console.log('this is the user', user)
+        user.addListItems(newItem);
+        res.redirect(`/user/${user.id}/home`);
+    }catch(err) {
+        console.log(err)
     }
 }
 //PUT-EDIT CHECKLIST
@@ -80,24 +67,22 @@ userController.editItem = async (req,res) => {
     try{ 
         const item = await models.itemList.findOne({
             where: {
-                id: req.param.id
+                id: req.param.itemId
             }
         })
-        const updatedItem = await item.update({
-            name: req.body.description
-        })
-        res.json(updatedItem)
-        res.redirect('');
+        const update = req.body
+        const updatedItem = await item.update(update)
+        res.json(updatedItem);
     }catch(err) {
         res.json({err});
     }
 }
-//
+//Deletes an item 
 userController.deleteItem = async (req,res) => {
     try{ 
         const item = await models.listItem.findOne({
             where:{
-                id: req.params.id
+                id: req.params.itemId
             }
         })
         const deleteItem = await item.destroy();
@@ -107,6 +92,69 @@ userController.deleteItem = async (req,res) => {
     }
 }
 
+//Logs out the user and redirects the browser to the homepage
+userController.logoutUser = async (req, res) => {
+    try{
+        res.redirect('/')
+    }catch (err) {
+        res.json({err});
+    }
+}
+
+
+
+
+
+
+
+
+
+//PRESENTATIONAL FUNCTIONS----------------------------------
+
+
+//Shows the web page where the user will register a new account
+userController.showRegisterUser = async (req,res) => {
+    try{
+         res.render('register');
+    }catch (err) {
+        res.json({err})
+    }
+}
+
+//Shows the webpage where the user will log in
+userController.showLoginUser = async (req,res) => {
+    try{
+        res.render('login')
+    }catch(err) {
+        res.json({err})
+    }
+}
+
+//Shows the homepage of the user
+userController.viewHome = async (req,res) => {
+    try{
+        // console.log('view home request', req, res)
+        const user = await models.user.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: {
+                model: models.listItem
+            },
+            order:[[models.listItem, "createdAt", "ASC" ]]
+        })
+        
+        const context = {
+            user: user
+        };
+        console.log(context)
+        res.render('dashboard', context)
+        
+    }catch(err) {
+        res.json({err})
+    }
+}
+//Show profile
 userController.viewProfile = async (req,res) => {
     try{
         const profile = await models.user.findOne({
@@ -119,7 +167,5 @@ userController.viewProfile = async (req,res) => {
         res.json({err})
     }
 }
-
-
 
 module.exports = userController

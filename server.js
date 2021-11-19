@@ -37,24 +37,9 @@ app.use(methodOverride('_method'));
 //
 app.use('/user', userRoutes);
 
-app.get('/user/register', (req, res) => {
-    console.log('hitting');
-    res.render('register');
-});
-
-app.get('/user/login', (req, res) => {
-    console.log('hitting');
-    res.render('login');
-});
-
 app.get('/', (req, res) => {
     console.log('hitting');
     res.render('welcome');
-});
-
-app.get('/user/:id/home', (req, res) => {
-    console.log('hitting');
-    res.render('dashboard');
 });
 
 app.listen(PORT, () => {
