@@ -4,23 +4,41 @@ const userController = require('../controllers/userController');
 
 //FUNCTIONAL ROUTES
 
-userRoutes.post('/register', userController.registerUser); //function route to make new user
-userRoutes.post('/login', userController.loginUser);//functional route to login a user
-userRoutes.get('/logout', userController.logoutUser);//functional route to logout a user
-userRoutes.get('/:userId/item', userController.getAllUserItems)//Adding a new item associated with a user by the id
-userRoutes.post('/:id/todo/new', userController.addToDo);//functional route to adda new item associated with the user 
-userRoutes.put('/:userId/todo/edit/itemId', userController.editItem);//
-userRoutes.delete('/todo/delete/:itemId', userController.deleteItem);//
-userRoutes.get('/:userId/profile', userController.viewProfile);//view the page of the usaer profile
-userRoutes.get('/:id/home', userController.viewHome); //views user profile based on id
+//function route to make new user
+userRoutes.post('/register', userController.registerUser); 
 
+//functional route to login a user
+userRoutes.post('/login', userController.loginUser);
 
+//functional route to logout a user
+userRoutes.get('/logout', userController.logoutUser);
 
+//Adding a new item associated with a user by the id
+userRoutes.get('/:userId/item', userController.getAllUserItems);
+
+//functional route to adda new item associated with the user 
+userRoutes.post('/:id/todo/new', userController.addToDo);
+
+//
+userRoutes.put('/:userId/todo/edit/itemId', userController.editItem);
+
+//
+userRoutes.delete('/todo/delete/:itemId', userController.deleteItem);
+
+//View the page of the usaer profile
+userRoutes.get('/:userId/profile', userController.viewProfile);
+
+//Views user home based on id
+userRoutes.get('/:id/home', userController.viewHome); 
 
 
 
 //PRESENTATIONAL ROUTES
+
+//Shows the user register page
 userRoutes.get('/userRegisterPage', userController.showRegisterUser);
+
+//Shows the user login page
 userRoutes.get('/userLoginPage', userController.showLoginUser);
 
 module.exports = userRoutes

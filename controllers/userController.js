@@ -1,6 +1,9 @@
 const models = require('../models')
 const userController = {}
 
+//FUNCTIONAL FUNCTIONS----------------------------------
+
+//Creating a new user in the database
 userController.registerUser = async (req, res) => {
     try{
         await models.user.create({
@@ -14,6 +17,7 @@ userController.registerUser = async (req, res) => {
     }
 }
 
+//Loggin in the user and redirecting them to their home page
 userController.loginUser = async (req, res) => {
     try{ 
         const user = await models.user.findOne({
@@ -34,32 +38,7 @@ userController.loginUser = async (req, res) => {
     }
 }
 
-userController.showRegisterUser = async (req,res) => {
-    try{
-         res.render('register');
-    }catch (err) {
-        res.json({err})
-    }
-}
-
-userController.showLoginUser = async (req,res) => {
-    try{
-        res.render('login')
-    }catch(err) {
-        res.json({err})
-    }
-}
-
-userController.logoutUser = async (req, res) => {
-    try{
-        req.logout();
-        req.flash('success_msg', 'You are logged out');
-        res.redirect('/user/login')
-    }catch (err) {
-        res.json({err});
-    }
-}
-//POST-ADD ITEMS TO CHECKLIST
+//Get all items
 userController.getAllUserItems = async (req, res) => {
     try{
         const userItems = await models.listItems.findAll({
@@ -75,7 +54,7 @@ userController.getAllUserItems = async (req, res) => {
         res.json({err})
     }
 }
-
+//Adds new item to user to do list 
 userController.addToDo = async (req,res) => {
     try{
         console.log(req.body)
@@ -131,6 +110,59 @@ userController.deleteItem = async (req,res) => {
     }
 }
 
+//Logs out the user and redirects the browser to the homepage
+userController.logoutUser = async (req, res) => {
+    try{
+        req.logout();
+        req.flash('success_msg', 'You are logged out');
+        res.redirect('/user/login')
+    }catch (err) {
+        res.json({err});
+    }
+}
+
+
+//PRESENTATIONAL FUNCTIONS----------------------------------
+
+
+//Shows the web page where the user will register a new account
+userController.showRegisterUser = async (req,res) => {
+    try{
+         res.render('register');
+    }catch (err) {
+        res.json({err})
+    }
+}
+
+//Shows the webpage where the user will log in
+userController.showLoginUser = async (req,res) => {
+    try{
+        res.render('login')
+    }catch(err) {
+        res.json({err})
+    }
+}
+
+//Shows the homepage of the user
+userController.viewHome = async (req,res) => {
+    try{
+        // console.log('view home request', req, res)
+        const user = await models.user.findOne({
+            where: {
+                id: req.params.id
+            }
+        })
+        
+        const context = {
+            user: user
+        };
+        res.render('dashboard', context)
+        
+    }catch(err) {
+        res.json({err})
+    }
+}
+//Show profile
 userController.viewProfile = async (req,res) => {
     try{
         const profile = await models.user.findOne({
@@ -143,26 +175,5 @@ userController.viewProfile = async (req,res) => {
         res.json({err})
     }
 }
-userController.viewHome = async (req,res) => {
-    try{
-        // console.log('view home request', req, res)
-        const user = await models.user.findOne({
-            where: {
-                id: req.params.id
-            }
-        })
-
-        const context = {
-            user: user
-        };
-       res.render('dashboard', context)
-            
-    }catch(err) {
-        res.json({err})
-    }
-}
-
-
-
 
 module.exports = userController
