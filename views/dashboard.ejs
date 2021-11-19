@@ -11,7 +11,7 @@
         </form>
         <h2> Added Task </h2>
         <% user.listItems.forEach(listItem => { %>
-            <li> <%= listItem.description %>  <form action="/user/item/<%= listItem.id %>"?_method=DELETE" method="POST"> <input type="submit" value="Delete" </form> </li>
+            <li> <%= listItem.description %> <form action="/user/item/<%= listItem.id %>?_method=DELETE" method="POST"> <input type="submit" value="Delete"> </form> </li>
         <% }) %>
     </div>
 

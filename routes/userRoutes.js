@@ -16,11 +16,11 @@ userRoutes.get('/logout', userController.logoutUser);
 //functional route to add a new item associated with the user 
 userRoutes.post('/:id/todo/new', userController.addToDo);
 
-//functional route to edited an item 
-userRoutes.put('item/:itemId', userController.editItem);
+//functional route to edite an item 
+userRoutes.put('/item/:itemId', userController.editItem);
 
 //functional route to delete an item 
-userRoutes.delete('item/:itemId', userController.deleteItem);
+userRoutes.delete('/item/:itemId', userController.deleteItem);
 
 //View the page of the usaer profile
 userRoutes.get('/:userId/profile', userController.viewProfile);
