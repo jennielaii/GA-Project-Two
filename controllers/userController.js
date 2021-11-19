@@ -23,7 +23,7 @@ userController.loginUser = async (req, res) => {
         })
 
         if (user.password === req.body.password) {
-            res.redirect('/user/:id/home')
+            res.redirect(`/user/${user.id}/home`)
         }else {
             res.status(401)
             res.json({err: 'login failed'})
