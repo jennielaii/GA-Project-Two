@@ -5,9 +5,12 @@ const PORT = process.env.PORT || 3000
 const rowdy = require('rowdy-logger');
 const routesReport = rowdy.begin(app);
 const methodOverride = require('method-override');
+// const bodyParser = require("body-parser");
 // const flash = require('connect-flash');
 const userRoutes = require('./routes/userRoutes');
 // const listItemRoutes = require('./routes/listitemRoutes')
+
+
 
 app.use(express.json())
 
@@ -29,9 +32,10 @@ app.use(methodOverride('_method'));
 //     res.locals.error = req.flash('error');
 //     next();
 //   });
+//
 
 // Routes
-// app.use('/listItem', listItemRoutes)
+//
 app.use('/user', userRoutes);
 
 app.get('/user/register', (req, res) => {
@@ -53,6 +57,17 @@ app.get('/user/:id/home', (req, res) => {
     console.log('hitting');
     res.render('dashboard');
 });
+
+// CHECKLIST Routes
+
+// app.get('/', function(req, res){
+//     res.render('dashboard');
+//  });
+
+ app.post('/addtask', function (req, res) {
+    res.render('dashboard')
+ });
+
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)

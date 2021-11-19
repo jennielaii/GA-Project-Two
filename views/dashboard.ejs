@@ -3,12 +3,15 @@
 <%- include("./partials/header.ejs")%>
 <%- include("./partials/navbar.ejs")%>
 <body>
-<br>
-<h1>Pre-Travel Checklist</h1>
-<form action="" method="POST">
-    <input type="text" name="description" /><br/>
-    <input type="submit" name="" value="Add"/>
-</form>
+    <div class="container">
+        <h2> A Simple ToDo List App </h2>
+        <form action ="/addtask" method="POST">
+               <input type="text" name="newtask" placeholder="add new task">        <button> Add Task </button>
+        <h2> Added Task </h2>
+        <button formaction="/removetask" type="submit"> Remove </button>
+        </form>
+        <h2> Completed task </h2>
+        </div>
 
 </body>
 <%- include("./partials/footer.ejs")%>
