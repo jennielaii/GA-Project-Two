@@ -3,25 +3,6 @@
     "database": "wanderlust",
     "host": "127.0.0.1",
     "dialect": "postgres"
-<<<<<<< HEAD
-  },
-  "test": {
-    "database": "wanderlust",
-    "host": "127.0.0.1",
-    "dialect": "postgres"
-  },
-  "production": {
-    "database": "wanderlust",
-    "host": "127.0.0.1",
-    "dialect": "postgres",
-    "use_env_variable": "DATABASE_URL",
-    "dialectOptions": {
-    "ssl": {
-    "require": true,
-    "rejectUnauthorized": false
-      }
-    }
-=======
 },
 "production": {
   "use_env_variable": "DATABASE_URL",
@@ -31,7 +12,6 @@
           "require": true,
           "rejectUnauthorized": false
       }
->>>>>>> 35db61c97b3692a2d799019b42ec9bea619ad2b9
   }
 }
 }
