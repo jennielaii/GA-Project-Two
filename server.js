@@ -13,6 +13,7 @@ const userRoutes = require('./routes/userRoutes');
 app.use(require('cors')())
 
 app.use(express.json())
+app.use(require('cors')())
 
 // Set default view engine
 app.use(expressLayouts);
