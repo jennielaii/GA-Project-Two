@@ -85,10 +85,19 @@ userController.deleteItem = async (req,res) => {
                 id: req.params.itemId
             }
         })
-        console.log(item)
+        const user = await models.user.findOne({
+            where: {
+                id: req.params.userId
+            },
+            include: {
+                model: models.listItem
+            },
+            order:[[models.listItem, "createdAt", "ASC" ]]
+        })
+        console.log(user.id)
         const itemToDelete = await item.destroy();
-        res.json(itemToDelete);
-        //res.redirect('dashboard', itemToDelete)
+        // res.json(itemToDelete);
+        res.redirect(`/user/${user.id}/home`, itemToDelete)
     }catch(err) {
         res.json({err});
     }
