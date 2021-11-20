@@ -20,7 +20,7 @@ userRoutes.post('/:id/todo/new', userController.addToDo);
 userRoutes.put('/item/:itemId', userController.editItem);
 
 //functional route to delete an item 
-userRoutes.delete('/item/:itemId', userController.deleteItem);
+userRoutes.delete('/:userId/item/:itemId', userController.deleteItem);
 
 //View the page of the usaer profile
 userRoutes.get('/:userId/profile', userController.viewProfile);

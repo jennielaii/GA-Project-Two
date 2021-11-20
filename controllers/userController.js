@@ -63,20 +63,21 @@ userController.addToDo = async (req,res) => {
     }
 }
 //PUT-EDIT CHECKLIST
-userController.editItem = async (req,res) => {
-    try{ 
-        const item = await models.itemList.findOne({
-            where: {
-                id: req.params.itemId
-            }
-        })
-        const update = req.body
-        const updatedItem = await item.update(update)
-        res.json(updatedItem);
-    }catch(err) {
-        res.json({err});
-    }
-}
+// userController.editItem = async (req,res) => {
+//     try{ 
+//         const item = await models.itemList.findOne({
+//             where: {
+//                 id: req.params.itemId
+//             }
+//         })
+//         const update = req.body
+//         const updatedItem = await item.update(update)
+//         res.json(updatedItem);
+//     }catch(err) {
+//         res.json({err});
+//     }
+// }
+
 //Deletes an item 
 userController.deleteItem = async (req,res) => {
     try{ 
@@ -85,10 +86,19 @@ userController.deleteItem = async (req,res) => {
                 id: req.params.itemId
             }
         })
-        console.log(item)
-        const itemToDelete = await item.destroy();
-        res.json(itemToDelete);
-        //res.redirect('dashboard', itemToDelete)
+        const user = await models.user.findOne({
+            where: {
+                id: req.params.userId
+            }
+            // include: {
+            //     model: models.listItem
+            // },
+            // order:[[models.listItem, "createdAt", "ASC" ]]
+        })
+        console.log(user.id)
+        await item.destroy();
+        // res.json(itemToDelete);
+        res.redirect(`/user/${user.id}/home`)
     }catch(err) {
         res.json({err});
     }

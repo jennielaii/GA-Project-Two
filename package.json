@@ -37,6 +37,7 @@
     "mongoose-sql": "^1.0.45",
     "pg": "^8.7.1",
     "rowdy-logger": "^1.0.2",
-    "sequelize": "^6.9.0"
+    "sequelize": "^6.9.0",
+    "sequelize-cli": "^6.3.0"
   }
 }
