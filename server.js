@@ -5,14 +5,11 @@ const PORT = process.env.PORT || 3000
 const rowdy = require('rowdy-logger');
 const routesReport = rowdy.begin(app);
 const methodOverride = require('method-override');
-// const bodyParser = require("body-parser");
 // const flash = require('connect-flash');
 const userRoutes = require('./routes/userRoutes');
 // const listItemRoutes = require('./routes/listitemRoutes')
 
-
 app.use(express.json())
-app.use(require('cors')())
 
 // Set default view engine
 app.use(expressLayouts);
@@ -38,14 +35,16 @@ app.use(methodOverride('_method'));
 //
 app.use('/user', userRoutes);
 
-
-
+// Welcome Page
 app.get('/', (req, res) => {
     console.log('hitting');
     res.render('welcome');
 });
 
-
+// Advice Page
+app.get('/advice', (req, res) => {
+    res.render('../views/advice.ejs',);
+  });
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
