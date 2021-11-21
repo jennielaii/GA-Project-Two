@@ -63,20 +63,20 @@ userController.addToDo = async (req,res) => {
     }
 }
 //PUT-EDIT CHECKLIST
-// userController.editItem = async (req,res) => {
-//     try{ 
-//         const item = await models.itemList.findOne({
-//             where: {
-//                 id: req.params.itemId
-//             }
-//         })
-//         const update = req.body
-//         const updatedItem = await item.update(update)
-//         res.json(updatedItem);
-//     }catch(err) {
-//         res.json({err});
-//     }
-// }
+userController.editItem = async (req,res) => {
+    try{ 
+        const item = await models.itemList.findOne({
+            where: {
+                id: req.params.itemId
+            }
+        })
+        const update = req.body
+        const updatedItem = await item.update(update)
+        res.json(updatedItem);
+    }catch(err) {
+        res.json({err});
+    }
+}
 
 //Deletes an item 
 userController.deleteItem = async (req,res) => {

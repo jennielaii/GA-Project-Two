@@ -9,8 +9,6 @@ const methodOverride = require('method-override');
 const userRoutes = require('./routes/userRoutes');
 // const listItemRoutes = require('./routes/listitemRoutes')
 
-
-
 app.use(express.json())
 
 // Set default view engine
@@ -37,10 +35,16 @@ app.use(methodOverride('_method'));
 //
 app.use('/user', userRoutes);
 
+// Welcome Page
 app.get('/', (req, res) => {
     console.log('hitting');
     res.render('welcome');
 });
+
+// Advice Page
+app.get('/advice', (req, res) => {
+    res.render('../views/advice.ejs',);
+  });
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)

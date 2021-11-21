@@ -16,13 +16,13 @@ userRoutes.get('/logout', userController.logoutUser);
 //functional route to add a new item associated with the user 
 userRoutes.post('/:id/todo/new', userController.addToDo);
 
-//functional route to edite an item 
+//functional route to edit an item 
 userRoutes.put('/item/:itemId', userController.editItem);
 
 //functional route to delete an item 
 userRoutes.delete('/:userId/item/:itemId', userController.deleteItem);
 
-//View the page of the usaer profile
+//View the page of the user profile
 userRoutes.get('/:userId/profile', userController.viewProfile);
 
 //PRESENTATIONAL ROUTES----------------------------------
