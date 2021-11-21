@@ -104,6 +104,8 @@ userController.deleteItem = async (req,res) => {
     }
 }
 
+
+
 //Logs out the user and redirects the browser to the homepage
 userController.logoutUser = async (req, res) => {
     try{
@@ -114,15 +116,15 @@ userController.logoutUser = async (req, res) => {
 }
 
 
-userController.changeItemProperty = async (req, res) => {
-    try{
-        const listItem = document.querySelector(".item45")
-        console.log(listItem)
-    }catch (err) {
-        res.json({err});
-        console.log(err)
-    }
-}
+// userController.changeItemProperty = async (req, res) => {
+//     try{
+//         const listItem = document.querySelector(".item45")
+//         console.log(listItem)
+//     }catch (err) {
+//         res.json({err});
+//         console.log(err)
+//     }
+// }
 
 
 
@@ -175,6 +177,27 @@ userController.viewHome = async (req,res) => {
         res.json({err})
     }
 }
+
+//Show the page to edit an item 
+userController.showEditItemPage = async (req, res) => {
+    try{
+        const item = await models.itemList.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: {
+                model: models.user
+            }
+        })
+        const context = {
+            listItemFromController: item
+        }
+        res.render('edit_comment', context)
+    }catch (err) {
+        res.json({err});
+    }
+}
+
 //Show profile
 userController.viewProfile = async (req,res) => {
     try{

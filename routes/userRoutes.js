@@ -25,6 +25,9 @@ userRoutes.delete('/:userId/item/:itemId', userController.deleteItem);
 //View the page of the user profile
 userRoutes.get('/:userId/profile', userController.viewProfile);
 
+
+
+
 //PRESENTATIONAL ROUTES----------------------------------
 
 //Shows the user register page
@@ -32,6 +35,17 @@ userRoutes.get('/userRegisterPage', userController.showRegisterUser);
 
 //Shows the user login page
 userRoutes.get('/userLoginPage', userController.showLoginUser);
+
+
+
+
+
+//Shows the edit item page 
+userRoutes.get('/item/:itemId', userController.showEditItemPage)
+
+
+
+
 
 //Views user home based on id
 userRoutes.get('/:id/home', userController.viewHome); 
