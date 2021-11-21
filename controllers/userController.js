@@ -113,6 +113,15 @@ userController.logoutUser = async (req, res) => {
 }
 
 
+userController.changeItemProperty = async (req, res) => {
+    try{
+        const listItem = document.querySelector(".item45")
+        console.log(listItem)
+    }catch (err) {
+        res.json({err});
+        console.log(err)
+    }
+}
 
 
 
