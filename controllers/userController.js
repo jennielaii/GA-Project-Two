@@ -192,7 +192,7 @@ userController.showEditItemPage = async (req, res) => {
         const context = {
             listItemFromController: item
         }
-        res.render('edit_comment', context)
+        res.render('edit', context)
     }catch (err) {
         res.json({err});
     }
