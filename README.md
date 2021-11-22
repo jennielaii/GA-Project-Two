@@ -35,6 +35,10 @@ When I click on the minus button next to the items, the items should be deleted
 | Edit a checklist | User can update detail info of a checklist after login | /users/checklist/edit/:id | app.put |
 | Delete a checklist | 1. User can delete a checklist after login<br>2. User can receive a warning message before actual delete | /users/checklist/delete/:id | app.delete |
 | Profile | User can checkout their personal profile such as name and email | /users/profile | app.get |
+| Shows register page | Presentational of registerging for account | /userRegisterPage | app.get| 
+| Shows login page | Presentaional of logging in | /userLoginPage | app.get |
+| Shows edit button | User can see edit button | /:userId/item/:itemId | app.get |
+| View home | Views user home based on ID | /:id/home | app.get | 
 
 ___
 ### MVP 
