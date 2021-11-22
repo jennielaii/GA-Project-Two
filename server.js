@@ -41,7 +41,7 @@ app.get('/', (req, res) => {
     res.render('welcome');
 });
 
-// Advice Page
+//Advice Page
 app.get('/advice', (req, res) => {
     res.render('../views/advice.ejs',);
   });

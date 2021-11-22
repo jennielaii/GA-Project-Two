@@ -42,4 +42,5 @@ userRoutes.get('/:userId/item/:itemId', userController.showEditItemPage)
 //Views user home based on id
 userRoutes.get('/:id/home', userController.viewHome); 
 
+
 module.exports = userRoutes
