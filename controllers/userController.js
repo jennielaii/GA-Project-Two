@@ -111,8 +111,14 @@ userController.logoutUser = async (req, res) => {
     }
 }
 
-
-
+//Logs out the user and redirects the browser to the homepage
+userController.logoutUser = async (req, res) => {
+    try{
+        res.redirect('/')
+    }catch (err) {
+        res.json({err});
+    }
+}
 
 //PRESENTATIONAL FUNCTIONS----------------------------------
 

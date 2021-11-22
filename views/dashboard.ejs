@@ -2,22 +2,43 @@
 <html lang="en">
 <%- include("./partials/header.ejs")%>
 <%- include("./partials/navbar.ejs")%>
+<style>
+    .itemRow {
+        display: flex;
+        align-items: center;
+    }
+    li {
+        list-style-type: none;
+    }
+    </style>
 <body>
     <div class="container">
+        <br>
+        <h2 class="text-secondary">Hello <%= user.name %>!</h2>
+        <br>
+        <div class="card border-secondary mb-3" style="max-width: 20rem;">
+            <div class="card-body">
+              <h3>Pre-Checklist</h3>
+                  <form action = "/user/<%= user.id %>/todo/new" method="POST">
+                         <input type="text" name="description" placeholder="add new task">   <button type = "submit"> Add Task </button>   
+                  </form>
+                  <br>
+                  <h2> Added Task </h2>
+                  <% user.listItems.forEach(listItem => { %>
+                      <li> 
+                          <div class = 'itemRow'>
+                          <%= listItem.description %> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
+                    
+                  <form action="item/<%= listItem.id %>" method="GET"> <input type="submit" value="Edit"> </form> 
+                  &nbsp &nbsp &nbsp
+                  <form action="item/<%= listItem.id %>?_method=DELETE" method="POST"> <input type="submit" value="Delete"></span></form>
+                
+                    </div>
+                    <br>
+                </li>
+                  <% }) %>
+            </div>
 
-        <h2> Hello <%= user.name %>! </h2>
-        <form action = "/user/<%= user.id %>/todo/new" method="POST">
-               <input type="text" name="description" placeholder="add new task">   <button type = "submit"> Add Task </button>   
-        </form>
-        <h2> Added Task </h2>
-        <% user.listItems.forEach(listItem => { %>
-            <li> <%= listItem.description %> 
-                
-            <form action="item/<%= listItem.id %>" method="GET"> <input type="submit" value="Edit"> </form> 
-                
-            <form action="item/<%= listItem.id %>?_method=DELETE" method="POST"> <input type="submit" value="Delete"> </form> </li>
-        <% }) %>
-		</form>
     </div>
 
 </body>
