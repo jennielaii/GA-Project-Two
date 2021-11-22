@@ -22,8 +22,7 @@ userRoutes.put('/item/:id', userController.editItem);
 //functional route to delete an item 
 userRoutes.delete('/:userId/item/:itemId', userController.deleteItem);
 
-//View the page of the user profile
-userRoutes.get('/:userId/profile', userController.viewProfile);
+
 
 
 
@@ -41,6 +40,9 @@ userRoutes.get('/:userId/item/:itemId', userController.showEditItemPage)
 
 //Views user home based on id
 userRoutes.get('/:id/home', userController.viewHome); 
+
+//View the page of the user profile
+userRoutes.get('/:userId/profile', userController.viewProfile);
 
 
 module.exports = userRoutes
