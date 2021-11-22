@@ -16,15 +16,8 @@ userRoutes.get('/logout', userController.logoutUser);
 //functional route to add a new item associated with the user 
 userRoutes.post('/:id/todo/new', userController.addToDo);
 
-
-
-
 //functional route to edit an item 
 userRoutes.put('/item/:id', userController.editItem);
-
-
-
-
 
 //functional route to delete an item 
 userRoutes.delete('/:userId/item/:itemId', userController.deleteItem);

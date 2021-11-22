@@ -131,12 +131,6 @@ userController.logoutUser = async (req, res) => {
 //     }
 // }
 
-
-
-
-
-
-
 //PRESENTATIONAL FUNCTIONS----------------------------------
 
 
