@@ -2,9 +2,13 @@
 <%- include("./partials/navbar.ejs")%>
 <body>
     <div class="container">
-        <h2> <%= listItemFromController.description %>! </h2>
-        <form action="/itemt/<%= listItemFromController.id %>?_method=PUT" method="POST">
-            <textarea name="description" cols="30" rows="10"><%= listItemFromController.description %></textarea>
+        <br>
+        <br>
+        <h4> Edit your checklist item below </h4>
+        <br>
+        <br>
+        <form action="/user/item/<%= listItemFromController.id %>?_method=PUT" method="POST">
+            <textarea name="description" cols="30" rows="5"><%= listItemFromController.description %></textarea>
             <input type="submit" value="Edit">
         </form>
 

@@ -65,14 +65,19 @@ userController.addToDo = async (req,res) => {
 //PUT-EDIT CHECKLIST
 userController.editItem = async (req,res) => {
     try{ 
-        const item = await models.itemList.findOne({
+        console.log(req.body)
+        console.log(req.params.id)
+        const itemSelected = await models.listItem.findOne({
             where: {
-                id: req.params.itemId
+                id: req.params.id
             }
-        })
-        const update = req.body
-        const updatedItem = await item.update(update)
-        res.json(updatedItem);
+        });
+        // console.log(itemSelected)
+        const update = req.body;
+      
+        const updatedItem = await itemSelected.update(update);
+        // res.redirect('/');
+        res.redirect(`/user/${updatedItem.userId}/home`);
     }catch(err) {
         res.json({err});
     }

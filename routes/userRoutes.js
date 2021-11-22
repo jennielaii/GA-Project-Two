@@ -16,8 +16,15 @@ userRoutes.get('/logout', userController.logoutUser);
 //functional route to add a new item associated with the user 
 userRoutes.post('/:id/todo/new', userController.addToDo);
 
+
+
+
 //functional route to edit an item 
-userRoutes.put('/item/:itemId', userController.editItem);
+userRoutes.put('/item/:id', userController.editItem);
+
+
+
+
 
 //functional route to delete an item 
 userRoutes.delete('/:userId/item/:itemId', userController.deleteItem);
@@ -36,16 +43,8 @@ userRoutes.get('/userRegisterPage', userController.showRegisterUser);
 //Shows the user login page
 userRoutes.get('/userLoginPage', userController.showLoginUser);
 
-
-
-
-
 //Shows the edit item page 
 userRoutes.get('/:userId/item/:itemId', userController.showEditItemPage)
-
-
-
-
 
 //Views user home based on id
 userRoutes.get('/:id/home', userController.viewHome); 
