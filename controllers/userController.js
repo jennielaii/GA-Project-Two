@@ -65,14 +65,19 @@ userController.addToDo = async (req,res) => {
 //PUT-EDIT CHECKLIST
 userController.editItem = async (req,res) => {
     try{ 
-        const item = await models.itemList.findOne({
+        console.log(req.body)
+        console.log(req.params.id)
+        const itemSelected = await models.listItem.findOne({
             where: {
-                id: req.params.itemId
+                id: req.params.id
             }
-        })
-        const update = req.body
-        const updatedItem = await item.update(update)
-        res.json(updatedItem);
+        });
+        // console.log(itemSelected)
+        const update = req.body;
+      
+        const updatedItem = await itemSelected.update(update);
+        // res.redirect('/');
+        res.redirect(`/user/${updatedItem.userId}/home`);
     }catch(err) {
         res.json({err});
     }
@@ -104,6 +109,8 @@ userController.deleteItem = async (req,res) => {
     }
 }
 
+
+
 //Logs out the user and redirects the browser to the homepage
 userController.logoutUser = async (req, res) => {
     try{
@@ -114,15 +121,15 @@ userController.logoutUser = async (req, res) => {
 }
 
 
-userController.changeItemProperty = async (req, res) => {
-    try{
-        const listItem = document.querySelector(".item45")
-        console.log(listItem)
-    }catch (err) {
-        res.json({err});
-        console.log(err)
-    }
-}
+// userController.changeItemProperty = async (req, res) => {
+//     try{
+//         const listItem = document.querySelector(".item45")
+//         console.log(listItem)
+//     }catch (err) {
+//         res.json({err});
+//         console.log(err)
+//     }
+// }
 
 
 
@@ -168,13 +175,35 @@ userController.viewHome = async (req,res) => {
         const context = {
             user: user
         };
-        console.log(context)
+        //console.log(context)
         res.render('dashboard', context)
         
     }catch(err) {
         res.json({err})
     }
 }
+
+//Show the page to edit an item 
+userController.showEditItemPage = async (req, res) => {
+    try{
+        const item = await models.listItem.findOne({
+            where: {
+                id: req.params.itemId
+            },
+            include: {
+                model: models.user
+            }
+        })
+        console.log(item)
+        const context = {
+            listItemFromController: item
+        }
+        res.render('edit', context)
+    }catch (err) {
+        res.json({err});
+    }
+}
+
 //Show profile
 userController.viewProfile = async (req,res) => {
     try{

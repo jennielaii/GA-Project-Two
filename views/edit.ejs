@@ -1,0 +1,19 @@
+<%- include("./partials/header.ejs")%>
+<%- include("./partials/navbar.ejs")%>
+<body>
+    <div class="container">
+        <br>
+        <br>
+        <h4> Edit your checklist item below </h4>
+        <br>
+        <br>
+        <form action="/user/item/<%= listItemFromController.id %>?_method=PUT" method="POST">
+            <textarea name="description" cols="30" rows="5"><%= listItemFromController.description %></textarea>
+            <input type="submit" value="Edit">
+        </form>
+
+    </div>
+
+</body>
+<%- include("./partials/footer.ejs")%>
+</html>     
