@@ -25,9 +25,12 @@ userController.loginUser = async (req, res) => {
                 email: req.body.email
             }
         })
-
+        const userId = user.id
+        console.log(userId)
         if (user.password === req.body.password) {
             console.log(user.name, "logged in")
+            
+            // localStorage.setItem('userId', userId)
             res.redirect(`/user/${user.id}/home`)
         }else {
             res.status(401)
@@ -36,7 +39,7 @@ userController.loginUser = async (req, res) => {
     }catch (err) {
         res.json({err})
     }
-}
+} 
 
 //Adds a new item to the user to do list 
 userController.addToDo = async (req,res) => {
@@ -111,30 +114,6 @@ userController.deleteItem = async (req,res) => {
 
 
 
-//Logs out the user and redirects the browser to the homepage
-userController.logoutUser = async (req, res) => {
-    try{
-        res.redirect('/')
-    }catch (err) {
-        res.json({err});
-    }
-}
-
-
-// userController.changeItemProperty = async (req, res) => {
-//     try{
-//         const listItem = document.querySelector(".item45")
-//         console.log(listItem)
-//     }catch (err) {
-//         res.json({err});
-//         console.log(err)
-//     }
-// }
-
-
-
-
-
 
 
 //PRESENTATIONAL FUNCTIONS----------------------------------
@@ -204,6 +183,22 @@ userController.showEditItemPage = async (req, res) => {
     }
 }
 
+// userController.viewAdvice = async (req, res) => {
+//     try{
+//         const user = await models.user.findOne({
+//             where: {
+//                 id: req.params.userId
+//             }
+//         })
+//         const context = {
+//             user: user
+//         }
+//         res.render('advice', context)
+//     }catch (err) {
+//         res.json({err})
+//     }
+// }
+
 //Show profile
 userController.viewProfile = async (req,res) => {
     try{
@@ -215,6 +210,16 @@ userController.viewProfile = async (req,res) => {
         res.json(profile);
     }catch(err) {
         res.json({err})
+    }
+}
+
+//Logs out the user and redirects the browser to the homepage
+userController.logoutUser = async (req, res) => {
+    try{
+        // localStorage.removeItem('userId')
+        res.redirect('/')
+    }catch (err) {
+        res.json({err});
     }
 }
 
