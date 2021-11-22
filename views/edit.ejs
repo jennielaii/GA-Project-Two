@@ -1,25 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
 <%- include("./partials/header.ejs")%>
 <%- include("./partials/navbar.ejs")%>
 <body>
     <div class="container">
         <h2> <%= listItemFromController.description %>! </h2>
-        <!-- <h2> Hello <%= user.name %>! </h2> -->
-        <form action="/itemt/<%= listItem.id %>?_method=PUT" method="POST">
+        <form action="/itemt/<%= listItemFromController.id %>?_method=PUT" method="POST">
             <textarea name="description" cols="30" rows="10"><%= listItemFromController.description %></textarea>
             <input type="submit" value="Edit">
         </form>
 
-        <!-- <h2> Hello <%= user.name %>! </h2>
-        <form action = "/user/<%= user.id %>/todo/new" method="POST">
-               <input type="text" name="description" placeholder="add new task">   <button type = "submit"> Add Task </button>   
-        </form>
-        <h2> Added Task </h2>
-        <% user.listItems.forEach(listItem => { %>
-            <li class = "item<%= listItem.id %>"> <%= listItem.description %> <form action="item/edit/<%= listItem.id %>?_method=PUT" method="POST"> <input type="submit" value="Edit"> </form> <form action="item/<%= listItem.id %>?_method=DELETE" method="POST"> <input type="submit" value="Delete"> </form> </li>
-        <% }) %>
-		</form> -->
     </div>
 
 </body>

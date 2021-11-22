@@ -170,7 +170,7 @@ userController.viewHome = async (req,res) => {
         const context = {
             user: user
         };
-        console.log(context)
+        //console.log(context)
         res.render('dashboard', context)
         
     }catch(err) {
@@ -181,14 +181,15 @@ userController.viewHome = async (req,res) => {
 //Show the page to edit an item 
 userController.showEditItemPage = async (req, res) => {
     try{
-        const item = await models.itemList.findOne({
+        const item = await models.listItem.findOne({
             where: {
-                id: req.params.id
+                id: req.params.itemId
             },
             include: {
                 model: models.user
             }
         })
+        console.log(item)
         const context = {
             listItemFromController: item
         }

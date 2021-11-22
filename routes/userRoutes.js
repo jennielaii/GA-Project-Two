@@ -41,7 +41,7 @@ userRoutes.get('/userLoginPage', userController.showLoginUser);
 
 
 //Shows the edit item page 
-userRoutes.get('/item/:itemId', userController.showEditItemPage)
+userRoutes.get('/:userId/item/:itemId', userController.showEditItemPage)
 
 
 
