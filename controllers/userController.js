@@ -25,7 +25,7 @@ userController.loginUser = async (req, res) => {
                 email: req.body.email
             }
         })
-        const userId = user.id
+        const userId = JSON.stringify(user.id)
         console.log(userId)
         if (user.password === req.body.password) {
             console.log(user.name, "logged in")
@@ -54,10 +54,6 @@ userController.addToDo = async (req,res) => {
                 id: req.params.id
             }
         })
-
-        // const context = {
-        //     user: user
-        // };
         console.log('this is the user', user)
         user.addListItems(newItem);
         res.redirect(`/user/${user.id}/home`);
@@ -75,11 +71,8 @@ userController.editItem = async (req,res) => {
                 id: req.params.id
             }
         });
-        // console.log(itemSelected)
-        const update = req.body;
-      
+        const update = req.body
         const updatedItem = await itemSelected.update(update);
-        // res.redirect('/');
         res.redirect(`/user/${updatedItem.userId}/home`);
     }catch(err) {
         res.json({err});
@@ -98,20 +91,25 @@ userController.deleteItem = async (req,res) => {
             where: {
                 id: req.params.userId
             }
-            // include: {
-            //     model: models.listItem
-            // },
-            // order:[[models.listItem, "createdAt", "ASC" ]]
+
         })
         console.log(user.id)
         await item.destroy();
-        // res.json(itemToDelete);
         res.redirect(`/user/${user.id}/home`)
     }catch(err) {
         res.json({err});
     }
 }
 
+//Logs out the user and redirects the browser to the homepage
+userController.logoutUser = async (req, res) => {
+    try{
+        // localStorage.removeItem('userId')
+        res.redirect('/')
+    }catch (err) {
+        res.json({err});
+    }
+}
 
 
 
@@ -140,7 +138,6 @@ userController.showLoginUser = async (req,res) => {
 //Shows the homepage of the user
 userController.viewHome = async (req,res) => {
     try{
-        // console.log('view home request', req, res)
         const user = await models.user.findOne({
             where: {
                 id: req.params.id
@@ -154,7 +151,7 @@ userController.viewHome = async (req,res) => {
         const context = {
             user: user
         };
-        //console.log(context)
+
         res.render('dashboard', context)
         
     }catch(err) {
@@ -183,22 +180,6 @@ userController.showEditItemPage = async (req, res) => {
     }
 }
 
-// userController.viewAdvice = async (req, res) => {
-//     try{
-//         const user = await models.user.findOne({
-//             where: {
-//                 id: req.params.userId
-//             }
-//         })
-//         const context = {
-//             user: user
-//         }
-//         res.render('advice', context)
-//     }catch (err) {
-//         res.json({err})
-//     }
-// }
-
 //Show profile
 userController.viewProfile = async (req,res) => {
     try{
@@ -213,14 +194,6 @@ userController.viewProfile = async (req,res) => {
     }
 }
 
-//Logs out the user and redirects the browser to the homepage
-userController.logoutUser = async (req, res) => {
-    try{
-        // localStorage.removeItem('userId')
-        res.redirect('/')
-    }catch (err) {
-        res.json({err});
-    }
-}
+
 
 module.exports = userController

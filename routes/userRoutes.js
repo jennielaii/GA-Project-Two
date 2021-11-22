@@ -10,9 +10,6 @@ userRoutes.post('/register', userController.registerUser);
 //functional route to login a user
 userRoutes.post('/login', userController.loginUser);
 
-//functional route to logout a user
-userRoutes.get('/logout', userController.logoutUser);
-
 //functional route to add a new item associated with the user 
 userRoutes.post('/:id/todo/new', userController.addToDo);
 
@@ -22,8 +19,9 @@ userRoutes.put('/item/:id', userController.editItem);
 //functional route to delete an item 
 userRoutes.delete('/:userId/item/:itemId', userController.deleteItem);
 
-//View the page of the user profile
-userRoutes.get('/:userId/profile', userController.viewProfile);
+//functional route to logout a user
+userRoutes.get('/logout', userController.logoutUser);
+
 
 
 
@@ -41,6 +39,9 @@ userRoutes.get('/:userId/item/:itemId', userController.showEditItemPage)
 
 //Views user home based on id
 userRoutes.get('/:id/home', userController.viewHome); 
+
+//View the page of the user profile
+userRoutes.get('/:userId/profile', userController.viewProfile);
 
 
 module.exports = userRoutes
